@@ -38,7 +38,7 @@ public class Day5 {
 
 
 
-        //Stack ------------------------------------------------------
+        //Stack Array ------------------------------------------------------
         Scanner scannerStack = new Scanner(main.stack);
         int lengthStack = 0;
         while (scannerStack.hasNextLine()) {
@@ -51,25 +51,63 @@ public class Day5 {
         scannerStack = new Scanner(main.stack);
         while (scannerStack.hasNextLine()) {
             arrStack[j] = scannerStack.nextLine();
-            System.out.println(arrStack[j]);
             j++;
         }
 
+        //Adding to Stack ------------------------------------------------------
+
+        Stack[] stackTemp = new Stack[9];
+        for (int k = 0; k < 9; k++) {
+            stackTemp[k] = new Stack<String>();
+        }
+
+        int stackNumTemp = 0;
+        for (String s : arrStack) {
+            if (Objects.equals(s, "") || s == null) {
+                stackNumTemp++;
+            } else {
+                stackTemp[stackNumTemp].add(s);
+            }
+        }
 
 
-        //Moving ------------------------------------------------------
         Stack[] stack = new Stack[9];
         for (int k = 0; k < 9; k++) {
             stack[k] = new Stack<String>();
         }
 
-        int stackNum = 0;
-        for (String s : arrStack) {
-            if (Objects.equals(s, "") || s == null) {
-                stackNum++;
-            } else {
-                stack[stackNum].add(s);
+        for (int k = 0; k < 9; k++) {
+            stack[k] = reverse(stackTemp[k]);
+        }
+
+
+        //Moving ------------------------------------------------------
+        for (String s : arr) {
+            int moves = Integer.parseInt(s.substring(s.indexOf("move") + 5, s.indexOf("from") - 1));
+            int moveFromParse = Integer.parseInt(s.substring(s.indexOf("from") + 5, s.indexOf("to") - 1));
+            int moveToParse = Integer.parseInt(s.substring(s.indexOf("to") + 3));
+            int moveFrom = moveFromParse - 1;
+            int moveTo = moveToParse - 1;
+
+            for (int k = 0; k < moves; k++) {
+                stack[moveTo].add(stack[moveFrom].pop());
             }
         }
+
+        //Printing ------------------------------------------------------
+
+        String out = "";
+        for (Stack value : stack) {
+            String peek = (String) value.peek();
+            out += peek.substring(1, 2);
+        }
+        System.out.println(out);
+    }
+    public static Stack reverse(Stack stack) {
+        Stack temp = new Stack();
+        while (!stack.isEmpty()) {
+            temp.add(stack.pop());
+        }
+        return temp;
     }
 }
