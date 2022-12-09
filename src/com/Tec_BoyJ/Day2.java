@@ -12,7 +12,7 @@ public class Day2 {
         this.file = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
     }
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day2 main = new Day2("/day2.txt");
+        Day2 main = new Day2("/Day2.txt");
         Scanner scanner = new Scanner(main.file);
         int score = 0;
 

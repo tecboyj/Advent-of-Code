@@ -15,7 +15,7 @@ public class Day1 {
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day1 main = new Day1("/day1.txt");
+        Day1 main = new Day1("/Day1.txt");
         Scanner scanner = new Scanner(main.file);
 
         int length = 0;
