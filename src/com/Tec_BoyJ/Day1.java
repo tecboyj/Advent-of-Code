@@ -30,7 +30,6 @@ public class Day1 {
         int i = 0;
         while (scanner.hasNextLine()) {
             arr[i] = scanner.nextLine();
-            //System.out.println(arr[i]);
             i++;
         }
         int zero = 0;
@@ -40,7 +39,6 @@ public class Day1 {
             if (Objects.equals(arr[j], "")) arr[j] = "0";
             arr2[j] = parseInt(arr[j]);
             if (arr2[j] == 0) zero++;
-            System.out.println(arr2[j]);
         }
 
         int next = 0;
@@ -59,12 +57,6 @@ public class Day1 {
         for (int l : arr3) if (l > out1) out1 = l;
         for (int m : arr3) if (m > out2 && m != out1) out2 = m;
         for (int n : arr3) if (n > out3 && n != out2 && n != out1) out3 = n;
-
-        System.out.println("--------------------");
-
-        for (int j : arr3) System.out.println(j);
-
-        System.out.println("--------------------");
 
         int outTotal = out1 + out2 + out3;
 
