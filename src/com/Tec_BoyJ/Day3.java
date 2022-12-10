@@ -6,71 +6,84 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static com.Tec_BoyJ.Main.ANSI_RESET;
+import static com.Tec_BoyJ.Main.ANSI_CYAN;
+import static com.Tec_BoyJ.Main.ANSI_GREEN;
 
 public class Day3 {
     static int priorityValue = 0;
     static String[] alpha = new String[52];
 
-    File file;
 
-    public Day3(String fileLocation) throws URISyntaxException {
-        this.file = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
+    File[] file;
+    public Day3(String fileLocation, String practiceLocation) throws URISyntaxException {
+        this.file = new File[2];
+        this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
+        this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day3 main = new Day3("/Day3.txt");
-        Scanner scanner = new Scanner(main.file);
+        Day3 main = new Day3("/Day3.txt", "/Day3 Practice.txt");
 
-        int length = 0;
-        while (scanner.hasNextLine()) {
-            length++;
-            scanner.nextLine();
-        }
-        String[] arr = new String[length];
+        for (int f = 0; f < main.file.length; f++) {
+            if (f == 0)
+                System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
+            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
+            Scanner scanner = new Scanner(main.file[f]);
 
-        scanner = new Scanner(main.file);
-        int i = 0;
-        while (scanner.hasNextLine()) {
-            arr[i] = scanner.nextLine();
-            i++;
-        }
+            int length = 0;
+            while (scanner.hasNextLine()) {
+                length++;
+                scanner.nextLine();
+            }
+            String[] arr = new String[length];
 
-        charArray();
-
-        for (String j : arr) {
-            int rucksack = j.length() / 2;
-            String half1 = j.substring(0, rucksack);
-            String half2 = j.substring(rucksack);
-
-            String string = null;
-
-            for (int k = 0; k < 52; k++) {
-                if (half1.contains(alpha[k]) && half2.contains(alpha[k])) {
-                    string = alpha[k];
-                    break;
-                }
+            scanner = new Scanner(main.file[f]);
+            int i = 0;
+            while (scanner.hasNextLine()) {
+                arr[i] = scanner.nextLine();
+                i++;
             }
 
-            assert string != null;
-            priorityValue(string);
-        }
-        System.out.println(priorityValue);
-        priorityValue = 0;
+            charArray();
 
-        int group = 0;
-        for (int l = 0; l < arr.length/3; l++) {
-            String string = null;
-            for (String m : alpha) {
-                if (arr[group].contains(m) && arr[group + 1].contains(m) && arr[group + 2].contains(m)) {
-                    string = m;
-                    break;
+            for (String j : arr) {
+                int rucksack = j.length() / 2;
+                String half1 = j.substring(0, rucksack);
+                String half2 = j.substring(rucksack);
+
+                String string = null;
+
+                for (int k = 0; k < 52; k++) {
+                    if (half1.contains(alpha[k]) && half2.contains(alpha[k])) {
+                        string = alpha[k];
+                        break;
+                    }
                 }
+
+                assert string != null;
+                priorityValue(string);
             }
-            assert string != null;
-            priorityValue(string);
-            group += 3;
+            System.out.println(ANSI_GREEN + "Part 1: Priority value of matching items --------------------" + ANSI_RESET);
+            System.out.println(priorityValue);
+            priorityValue = 0;
+
+            int group = 0;
+            for (int l = 0; l < arr.length / 3; l++) {
+                String string = null;
+                for (String m : alpha) {
+                    if (arr[group].contains(m) && arr[group + 1].contains(m) && arr[group + 2].contains(m)) {
+                        string = m;
+                        break;
+                    }
+                }
+                assert string != null;
+                priorityValue(string);
+                group += 3;
+            }
+            System.out.println(ANSI_GREEN + "Part 2: Priority value of elf groups --------------------" + ANSI_RESET);
+            System.out.println(priorityValue);
         }
-        System.out.println(priorityValue);
     }
 
     public static void priorityValue(String string) {

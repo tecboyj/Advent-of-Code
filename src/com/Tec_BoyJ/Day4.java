@@ -6,6 +6,10 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static com.Tec_BoyJ.Main.ANSI_RESET;
+import static com.Tec_BoyJ.Main.ANSI_CYAN;
+import static com.Tec_BoyJ.Main.ANSI_GREEN;
+
 public class Day4 {
     File file;
     public Day4(String fileLocation) throws URISyntaxException {
@@ -52,7 +56,9 @@ public class Day4 {
                 count2++;
             }
         }
+        System.out.println(ANSI_GREEN + "Part 1: How many contain another--------------------" + ANSI_RESET);
         System.out.println(count);
+        System.out.println(ANSI_GREEN + "Part 2: How many overlap --------------------" + ANSI_RESET);
         System.out.println(count2);
     }
 }

@@ -5,6 +5,10 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.*;
 
+import static com.Tec_BoyJ.Main.ANSI_RESET;
+import static com.Tec_BoyJ.Main.ANSI_CYAN;
+import static com.Tec_BoyJ.Main.ANSI_GREEN;
+
 public class Day5 {
     File file;
     File stack;
@@ -128,13 +132,15 @@ public class Day5 {
         String out2 = "";
         for (Stack value : stack1) {
             String peek = (String) value.peek();
-            out1 += peek.substring(1, 2);
+            out1 += peek.charAt(1);
         }
         for (Stack value : stack2) {
             String peek = (String) value.peek();
-            out2 += peek.substring(1, 2);
+            out2 += peek.charAt(1);
         }
+        System.out.println(ANSI_GREEN + "Part 1: Top crate letters; one at a time --------------------" + ANSI_RESET);
         System.out.println(out1);
+        System.out.println(ANSI_GREEN + "Part 2: Top crate letters; multiple at a time --------------------" + ANSI_RESET);
         System.out.println(out2);
     }
 

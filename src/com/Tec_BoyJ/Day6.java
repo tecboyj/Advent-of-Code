@@ -6,6 +6,10 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static com.Tec_BoyJ.Main.ANSI_RESET;
+import static com.Tec_BoyJ.Main.ANSI_CYAN;
+import static com.Tec_BoyJ.Main.ANSI_GREEN;
+
 public class Day6 {
     File file;
     public Day6(String fileLocation) throws URISyntaxException {
@@ -30,13 +34,14 @@ public class Day6 {
             i++;
         }
 
-        System.out.println("Part 1: 4 Unique characters");
+        System.out.println(ANSI_GREEN + "Part 1: 4 Unique characters" + ANSI_RESET);
         System.out.println();
+        System.out.println("Corster100: ----------");
 
         for (String s : arr) {
             Corster100(s, 4);
         }
-        System.out.println("--------------------");
+        System.out.println("Me: ----------");
 
         int[] count1 = new int[length];
         for (int j = 0; j < arr.length; j++) {
@@ -58,35 +63,42 @@ public class Day6 {
 
 
         System.out.println();
-        System.out.println("Part 2: 14 Unique characters ----------------------------------------");
+        System.out.println(ANSI_GREEN + "Part 2: 14 Unique characters --------------------" + ANSI_RESET);
         System.out.println();
+        System.out.println("Corster100: ----------");
         for (String s : arr) {
             Corster100(s, 14);
         }
-        System.out.println("--------------------");
 
+        System.out.println("Me: ----------");
 
-
-        //TODO do my own version of this puzzle ⌄⌄⌄
-        /*
         int[] count2 = new int[length];
         for (int j = 0; j < arr.length; j++) {
             int l = 0;
             while (true) {
                 char[] check = arr[j].substring(l, l + 14).toCharArray();
-                if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
-                    count1[j]++;
+                boolean mark = true;
+                for (int k = 0; k < check.length; k++) {
+                    for (int m = 0; m < check.length; m++) {
+                        if (k != m && check[k] == check[m]) {
+                            mark = false;
+                        }
+                    }
+                }
+                if (mark) break;
+                else {
+                    count2[j]++;
                     l++;
-                } else break;
+                }
             }
         }
 
         for (int j : count2) {
-            j += 4;
+            j += 14;
             System.out.println(j);
         }
 
-         */
+
     }
     public static void Corster100(String str, final int l) {
         char[] arr = str.substring(0, l).toCharArray();
@@ -98,9 +110,9 @@ public class Day6 {
             {
                 for(int y = 0; y < arr.length; y++)
                 {
-                    if(arr[x] == arr[y] && x != y)
-                    {
+                    if (arr[x] == arr[y] && x != y) {
                         mark = false;
+                        break;
                     }
                 }
             }

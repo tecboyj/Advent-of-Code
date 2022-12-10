@@ -10,16 +10,16 @@ import static com.Tec_BoyJ.Main.ANSI_RESET;
 import static com.Tec_BoyJ.Main.ANSI_CYAN;
 import static com.Tec_BoyJ.Main.ANSI_GREEN;
 
-public class Day {
+public class Day8 {
     File[] file;
-    public Day(String fileLocation, String practiceLocation) throws URISyntaxException {
+    public Day8(String fileLocation, String practiceLocation) throws URISyntaxException {
         this.file = new File[2];
         this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
         this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day main = new Day("/Day.txt", "/Day Practice.txt");
+        Day8 main = new Day8("/Day.txt", "/Day Practice.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             if (f == 0)
