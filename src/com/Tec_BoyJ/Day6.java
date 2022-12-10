@@ -30,28 +30,33 @@ public class Day6 {
             i++;
         }
 
+        for (String s : arr) {
+            Corster100(s);
+        }
+        System.out.println("--------------------");
+
         int[] count = new int[length];
         for (int j = 0; j < arr.length; j++) {
-            String[] split = arr[j].split("");
-            String test = split[0];
-            for (int k = 1; k < split.length; k++) {
-                if (test.contains(split[k])) {
-                    test += split[k];
+            int l = 0;
+            while (true) {
+                char[] check = arr[j].substring(l, l + 4).toCharArray();
+                if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
                     count[j]++;
+                    l++;
                 } else {
                     break;
                 }
             }
-
-
         }
+
         for (int j : count) {
+            j += 4;
             System.out.println(j);
         }
 
 
-        /*
 
+        /*
         //What GitHub Copilot wrote
 
         int count = 0;
@@ -75,5 +80,38 @@ public class Day6 {
         System.out.println(count);
 
          */
+    }
+    public static void Corster100(String str) {
+        final int l = 4;
+        char[] arr = str.substring(0, l).toCharArray();
+        int s = l;
+        while(s < str.length())
+        {
+            boolean mark = true;
+            for(int x = 0; x < arr.length; x++)
+            {
+                for(int y = 0; y < arr.length; y++)
+                {
+                    if(arr[x] == arr[y] && x != y)
+                    {
+                        mark = false;
+                    }
+                }
+            }
+            if(mark)
+            {
+                break;
+            }
+            else
+            {
+                for(int x = 0; x < l - 1; x++)
+                {
+                    arr[x] = arr[x + 1];
+                }
+                arr[l - 1] = str.charAt(s);
+            }
+            s++;
+        }
+        System.out.println(s);
     }
 }
