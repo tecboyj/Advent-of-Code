@@ -30,59 +30,65 @@ public class Day6 {
             i++;
         }
 
+        System.out.println("Part 1: 4 Unique characters");
+        System.out.println();
+
         for (String s : arr) {
-            Corster100(s);
+            Corster100(s, 4);
         }
         System.out.println("--------------------");
 
-        int[] count = new int[length];
+        int[] count1 = new int[length];
         for (int j = 0; j < arr.length; j++) {
             int l = 0;
             while (true) {
                 char[] check = arr[j].substring(l, l + 4).toCharArray();
                 if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
-                    count[j]++;
+                    count1[j]++;
                     l++;
-                } else {
-                    break;
-                }
+                } else break;
             }
         }
 
-        for (int j : count) {
+        for (int j : count1) {
             j += 4;
             System.out.println(j);
         }
 
 
 
-        /*
-        //What GitHub Copilot wrote
+        System.out.println();
+        System.out.println("Part 2: 14 Unique characters ----------------------------------------");
+        System.out.println();
+        for (String s : arr) {
+            Corster100(s, 14);
+        }
+        System.out.println("--------------------");
 
-        int count = 0;
+
+
+        //TODO do my own version of this puzzle ⌄⌄⌄
+        /*
+        int[] count2 = new int[length];
         for (int j = 0; j < arr.length; j++) {
-            String[] split = arr[j].split("");
-            for (int k = 0; k < split.length; k++) {
-                boolean found = false;
-                for (int l = 0; l < arr.length; l++) {
-                    if (j != l) {
-                        if (arr[l].contains(split[k])) {
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-                if (!found) {
-                    count++;
-                }
+            int l = 0;
+            while (true) {
+                char[] check = arr[j].substring(l, l + 14).toCharArray();
+                if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
+                    count1[j]++;
+                    l++;
+                } else break;
             }
         }
-        System.out.println(count);
+
+        for (int j : count2) {
+            j += 4;
+            System.out.println(j);
+        }
 
          */
     }
-    public static void Corster100(String str) {
-        final int l = 4;
+    public static void Corster100(String str, final int l) {
         char[] arr = str.substring(0, l).toCharArray();
         int s = l;
         while(s < str.length())
