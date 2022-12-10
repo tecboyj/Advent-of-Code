@@ -29,5 +29,51 @@ public class Day6 {
             arr[i] = scanner.nextLine();
             i++;
         }
+
+        int[] count = new int[length];
+        for (int j = 0; j < arr.length; j++) {
+            String[] split = arr[j].split("");
+            String test = split[0];
+            for (int k = 1; k < split.length; k++) {
+                if (test.contains(split[k])) {
+                    test += split[k];
+                    count[j]++;
+                } else {
+                    break;
+                }
+            }
+
+
+        }
+        for (int j : count) {
+            System.out.println(j);
+        }
+
+
+        /*
+
+        //What GitHub Copilot wrote
+
+        int count = 0;
+        for (int j = 0; j < arr.length; j++) {
+            String[] split = arr[j].split("");
+            for (int k = 0; k < split.length; k++) {
+                boolean found = false;
+                for (int l = 0; l < arr.length; l++) {
+                    if (j != l) {
+                        if (arr[l].contains(split[k])) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (!found) {
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+
+         */
     }
 }
