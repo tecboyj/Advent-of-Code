@@ -6,14 +6,14 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Day {
+public class Day6 {
     File file;
-    public Day(String fileLocation) throws URISyntaxException {
+    public Day6(String fileLocation) throws URISyntaxException {
         this.file = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day main = new Day("/Day.txt");
+        Day6 main = new Day6("/Day6.txt");
         Scanner scanner = new Scanner(main.file);
 
         int length = 0;

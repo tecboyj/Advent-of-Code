@@ -54,11 +54,14 @@ public class Day5 {
             j++;
         }
 
-        //Adding to Stack ------------------------------------------------------
 
-        Stack[] stackTemp = new Stack[9];
+
+        //Adding to Stack ------------------------------------------------------
+        Stack[] stackTemp1 = new Stack[9];
+        Stack[] stackTemp2 = new Stack[9];
         for (int k = 0; k < 9; k++) {
-            stackTemp[k] = new Stack<String>();
+            stackTemp1[k] = new Stack<String>();
+            stackTemp2[k] = new Stack<String>();
         }
 
         int stackNumTemp = 0;
@@ -66,22 +69,27 @@ public class Day5 {
             if (Objects.equals(s, "") || s == null) {
                 stackNumTemp++;
             } else {
-                stackTemp[stackNumTemp].add(s);
+                stackTemp1[stackNumTemp].add(s);
+                stackTemp2[stackNumTemp].add(s);
             }
         }
 
 
-        Stack[] stack = new Stack[9];
+        Stack[] stack1 = new Stack[9];
+        Stack[] stack2 = new Stack[9];
         for (int k = 0; k < 9; k++) {
-            stack[k] = new Stack<String>();
+            stack1[k] = new Stack<String>();
+            stack2[k] = new Stack<String>();
         }
 
         for (int k = 0; k < 9; k++) {
-            stack[k] = reverse(stackTemp[k]);
+            stack1[k] = reverse(stackTemp1[k]);
+            stack2[k] = reverse(stackTemp2[k]);
         }
 
 
-        //Moving ------------------------------------------------------
+
+        //Moving CrateMover 9000 ------------------------------------------------------
         for (String s : arr) {
             int moves = Integer.parseInt(s.substring(s.indexOf("move") + 5, s.indexOf("from") - 1));
             int moveFromParse = Integer.parseInt(s.substring(s.indexOf("from") + 5, s.indexOf("to") - 1));
@@ -90,19 +98,46 @@ public class Day5 {
             int moveTo = moveToParse - 1;
 
             for (int k = 0; k < moves; k++) {
-                stack[moveTo].add(stack[moveFrom].pop());
+                stack1[moveTo].add(stack1[moveFrom].pop());
             }
         }
 
-        //Printing ------------------------------------------------------
 
-        String out = "";
-        for (Stack value : stack) {
-            String peek = (String) value.peek();
-            out += peek.substring(1, 2);
+
+        //Moving CrateMover 9001 ------------------------------------------------------
+        Stack<Object> stackTransfer = new Stack<>();
+        for (String s : arr) {
+            int moves = Integer.parseInt(s.substring(s.indexOf("move") + 5, s.indexOf("from") - 1));
+            int moveFromParse = Integer.parseInt(s.substring(s.indexOf("from") + 5, s.indexOf("to") - 1));
+            int moveToParse = Integer.parseInt(s.substring(s.indexOf("to") + 3));
+            int moveFrom = moveFromParse - 1;
+            int moveTo = moveToParse - 1;
+
+            for (int k = 0; k < moves; k++) {
+                stackTransfer.add(stack2[moveFrom].pop());
+            }
+            while (!stackTransfer.isEmpty()) {
+                stack2[moveTo].add(stackTransfer.pop());
+            }
         }
-        System.out.println(out);
+
+
+
+        //Printing ------------------------------------------------------
+        String out1 = "";
+        String out2 = "";
+        for (Stack value : stack1) {
+            String peek = (String) value.peek();
+            out1 += peek.substring(1, 2);
+        }
+        for (Stack value : stack2) {
+            String peek = (String) value.peek();
+            out2 += peek.substring(1, 2);
+        }
+        System.out.println(out1);
+        System.out.println(out2);
     }
+
     public static Stack reverse(Stack stack) {
         Stack temp = new Stack();
         while (!stack.isEmpty()) {
