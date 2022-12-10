@@ -32,5 +32,10 @@ public class Main {
         System.out.println("--------------------");
         Day5.main(args);
 
+        System.out.println(ANSI_RED + "----------------------------------------" + ANSI_RESET);
+        System.out.println("Day 6");
+        System.out.println("--------------------");
+        Day6.main(args);
+
     }
 }
