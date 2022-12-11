@@ -6,9 +6,7 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static com.Tec_BoyJ.Main.ANSI_RESET;
-import static com.Tec_BoyJ.Main.ANSI_CYAN;
-import static com.Tec_BoyJ.Main.ANSI_GREEN;
+import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day8 {
     File[] file;
@@ -19,7 +17,7 @@ public class Day8 {
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day8 main = new Day8("/Day.txt", "/Day Practice.txt");
+        Day8 main = new Day8("/Day8.txt", "/Day8 Practice.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             if (f == 0)

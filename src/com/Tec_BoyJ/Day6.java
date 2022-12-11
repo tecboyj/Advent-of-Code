@@ -6,99 +6,98 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static com.Tec_BoyJ.Main.ANSI_RESET;
-import static com.Tec_BoyJ.Main.ANSI_CYAN;
-import static com.Tec_BoyJ.Main.ANSI_GREEN;
+import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day6 {
-    File file;
-    public Day6(String fileLocation) throws URISyntaxException {
-        this.file = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
+    File[] file;
+    public Day6(String fileLocation, String practiceLocation) throws URISyntaxException {
+        this.file = new File[2];
+        this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
+        this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day6 main = new Day6("/Day6.txt");
-        Scanner scanner = new Scanner(main.file);
+        Day6 main = new Day6("/Day6.txt", "/Day6 Practice.txt");
 
-        int length = 0;
-        while (scanner.hasNextLine()) {
-            length++;
-            scanner.nextLine();
-        }
-        String[] arr = new String[length];
+        for (int f = 0; f < main.file.length; f++) {
+            if (f == 0) System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
+            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
+            Scanner scanner = new Scanner(main.file[f]);
 
-        int i = 0;
-        scanner = new Scanner(main.file);
-        while (scanner.hasNextLine()) {
-            arr[i] = scanner.nextLine();
-            i++;
-        }
-
-        System.out.println(ANSI_GREEN + "Part 1: 4 Unique characters" + ANSI_RESET);
-        System.out.println();
-        System.out.println("Corster100: ----------");
-
-        for (String s : arr) {
-            Corster100(s, 4);
-        }
-        System.out.println("Me: ----------");
-
-        int[] count1 = new int[length];
-        for (int j = 0; j < arr.length; j++) {
-            int l = 0;
-            while (true) {
-                char[] check = arr[j].substring(l, l + 4).toCharArray();
-                if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
-                    count1[j]++;
-                    l++;
-                } else break;
+            int length = 0;
+            while (scanner.hasNextLine()) {
+                length++;
+                scanner.nextLine();
             }
-        }
+            String[] arr = new String[length];
 
-        for (int j : count1) {
-            j += 4;
-            System.out.println(j);
-        }
+            int i = 0;
+            scanner = new Scanner(main.file[f]);
+            while (scanner.hasNextLine()) {
+                arr[i] = scanner.nextLine();
+                i++;
+            }
+
+            System.out.println(ANSI_GREEN + "Part 1: 4 Unique characters" + ANSI_RESET);
+            System.out.println("Corster100: ----------");
+
+            for (String s : arr) {
+                Corster100(s, 4);
+            }
+            System.out.println("Me: ----------");
+
+            int[] count1 = new int[length];
+            for (int j = 0; j < arr.length; j++) {
+                int l = 0;
+                while (true) {
+                    char[] check = arr[j].substring(l, l + 4).toCharArray();
+                    if (check[0] == check[1] || check[0] == check[2] || check[0] == check[3] || check[1] == check[2] || check[1] == check[3] || check[2] == check[3]) {
+                        count1[j]++;
+                        l++;
+                    } else break;
+                }
+            }
+
+            for (int j : count1) {
+                j += 4;
+                System.out.println(j);
+            }
 
 
+            System.out.println(ANSI_GREEN + "Part 2: 14 Unique characters --------------------" + ANSI_RESET);
+            System.out.println("Corster100: ----------");
+            for (String s : arr) {
+                Corster100(s, 14);
+            }
 
-        System.out.println();
-        System.out.println(ANSI_GREEN + "Part 2: 14 Unique characters --------------------" + ANSI_RESET);
-        System.out.println();
-        System.out.println("Corster100: ----------");
-        for (String s : arr) {
-            Corster100(s, 14);
-        }
+            System.out.println("Me: ----------");
 
-        System.out.println("Me: ----------");
-
-        int[] count2 = new int[length];
-        for (int j = 0; j < arr.length; j++) {
-            int l = 0;
-            while (true) {
-                char[] check = arr[j].substring(l, l + 14).toCharArray();
-                boolean mark = true;
-                for (int k = 0; k < check.length; k++) {
-                    for (int m = 0; m < check.length; m++) {
-                        if (k != m && check[k] == check[m]) {
-                            mark = false;
+            int[] count2 = new int[length];
+            for (int j = 0; j < arr.length; j++) {
+                int l = 0;
+                while (true) {
+                    char[] check = arr[j].substring(l, l + 14).toCharArray();
+                    boolean mark = true;
+                    for (int k = 0; k < check.length; k++) {
+                        for (int m = 0; m < check.length; m++) {
+                            if (k != m && check[k] == check[m]) {
+                                mark = false;
+                            }
                         }
                     }
-                }
-                if (mark) break;
-                else {
-                    count2[j]++;
-                    l++;
+                    if (mark) break;
+                    else {
+                        count2[j]++;
+                        l++;
+                    }
                 }
             }
+
+            for (int j : count2) {
+                j += 14;
+                System.out.println(j);
+            }
         }
-
-        for (int j : count2) {
-            j += 14;
-            System.out.println(j);
-        }
-
-
     }
     public static void Corster100(String str, final int l) {
         char[] arr = str.substring(0, l).toCharArray();

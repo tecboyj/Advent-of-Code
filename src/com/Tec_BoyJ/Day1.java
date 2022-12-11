@@ -6,9 +6,9 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static com.Tec_BoyJ.Main.ANSI_RESET;
-import static com.Tec_BoyJ.Main.ANSI_CYAN;
-import static com.Tec_BoyJ.Main.ANSI_GREEN;
+import static com.Tec_BoyJ.Main.Main.ANSI_RESET;
+import static com.Tec_BoyJ.Main.Main.ANSI_CYAN;
+import static com.Tec_BoyJ.Main.Main.ANSI_GREEN;
 import static java.lang.Integer.parseInt;
 
 public class Day1 {

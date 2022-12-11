@@ -1,4 +1,4 @@
-package com.Tec_BoyJ;
+package Testing;
 
 public class Testing {
     public static void main(String[] args) {
