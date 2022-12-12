@@ -21,7 +21,8 @@ public class Day {
 
         for (int f = 0; f < main.file.length; f++) {
             if (f == 0) System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
-            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
+            //else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
+            else return;
             Scanner scanner = new Scanner(main.file[f]);
 
             int length = 0;

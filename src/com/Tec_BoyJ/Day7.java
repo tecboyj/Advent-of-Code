@@ -9,7 +9,9 @@ import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day7 {
 
-    static HashMap<String, Integer> hashMap = new HashMap<>();
+    static HashMap<String, Directory> hashMap = new HashMap<>();
+    static Directory[] directories;
+    static Stack[] stackContainedDirectories;
 
     File[] file;
     public Day7(String fileLocation, String practiceLocation) throws URISyntaxException {
@@ -44,31 +46,38 @@ public class Day7 {
 
             // stuff
 
+            Stack<String> stackNoDupe = new Stack<>();
             int directoryArr = 0;
             for (String s : arr) {
-                if (s.contains("cd") && !s.equals("$ cd ..")) directoryArr++;
+                if (s.contains("cd") && !s.equals("$ cd ..") && !stackNoDupe.contains(s)) {
+                    directoryArr++;
+                    stackNoDupe.add(s);
+                }
             }
-            Directory[] directories = new Directory[directoryArr];
+            directories = new Directory[directoryArr];
             Stack[] stackDirectories = new Stack[directoryArr];
-            Stack[] stackContainedDirectories = new Stack[directoryArr];
+            stackContainedDirectories = new Stack[directoryArr];
             for (int j = 0; j < directoryArr; j++) {
                 stackDirectories[j] = new Stack<String>();
                 stackContainedDirectories[j] = new Stack<String>();
             }
 
+            stackNoDupe.clear();
             int newDirectory = -1;
             for (String s : arr) {
-                if (s.contains("cd") && !s.equals("$ cd ..")) newDirectory++;
+                if (s.contains("cd") && !s.equals("$ cd ..") && !stackNoDupe.contains(s)) newDirectory++;
                 else if (numCheck(s)) stackDirectories[newDirectory].add(s);
                 else if (s.contains("dir")) stackContainedDirectories[newDirectory].add(s);
+                stackNoDupe.add(s);
             }
 
-
+            Stack stackNoDupeNames = new Stack<String>();
             for (int j = 0; j < directories.length; j++) {
                 for (String s : arr) {
-                    int index = s.indexOf("cd");
-                    index += 3;
-                    if (s.contains("cd") && !s.equals("$ cd ..")) directories[j] = new Directory(s.substring(5), 0, false);
+                    if (s.contains("cd") && !s.equals("$ cd ..") && !stackNoDupeNames.contains(s) && directories[j] == null) {
+                        directories[j] = new Directory(s.substring(s.indexOf("cd") + 3), 0, false, j);
+                        stackNoDupeNames.add(s);
+                    }
                 }
             }
             for (int j = 0; j < directories.length; j++) {
@@ -78,39 +87,53 @@ public class Day7 {
                 }
             }
             hashDirectory(directories);
-            for (Directory value : directories) {
-                System.out.println(value.name + " " + value.size);
-            }
+
 
             for (int j = 0; j < directories.length; j++) {
                 directories[j].containsDirectories = !stackContainedDirectories[j].empty();
             }
+            for (int j = 0; j < directories.length; j++) {
+                addSubDirectories(j);
+            }
 
-            System.out.println(hashMap);
             int size = 0;
             for (Directory directory : directories) if (directory.size < 100000) size += directory.size;
             System.out.println(size);
-
         }
     }
+
     public static boolean numCheck(String s) {
         //return s.contains(".") && !s.equals("$ cd ..");
         for (int i = 1; i < 10; i++) if (s.contains(String.valueOf(i))) return true;
         return false;
     }
     public static void hashDirectory(Directory[] directories) {
-        for (int i = 0; i < directories.length; i++) {
-            hashMap.put(directories[i].name, directories[i].size);
+        for (Directory directory : directories) {
+            hashMap.put(directory.name, directory);
         }
     }
+    public static void addSubDirectories(int directory) {
+        if (directories[directory].containsDirectories) {
+            for (int k = 0; k < stackContainedDirectories[directory].size(); k++) {
+                String transfer = (String) stackContainedDirectories[directory].pop();
+                String dir = transfer.substring(transfer.indexOf("dir") + 4);
+                if (hashMap.get(dir).containsDirectories) addSubDirectories(hashMap.get(dir).stack);
+                directories[directory].size += hashMap.get(dir).size;
+                directories[directory].containsDirectories = false;
+            }
+        }
+    }
+
     private static class Directory {
         String name;
         int size;
         boolean containsDirectories;
-        public Directory(String name, int size, boolean containsDirectories) {
+        int stack;
+        public Directory(String name, int size, boolean containsDirectories, int stack) {
             this.name = name;
             this.size = size;
             this.containsDirectories = containsDirectories;
+            this.stack = stack;
         }
     }
 }
