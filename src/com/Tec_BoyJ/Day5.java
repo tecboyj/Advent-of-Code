@@ -1,5 +1,7 @@
 package com.Tec_BoyJ;
 
+import com.Tec_BoyJ.Main.Main;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -21,33 +23,15 @@ public class Day5 {
     }
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day5 main = new Day5("/Day5.txt", "/Day5 Practice.txt", "/Day5 Stack.txt", "/Day5 Stack Practice.txt");
+        Main main = new Main("/Tec_BoyJ/Day5.txt", "/Tec_BoyJ/Day5 Practice.txt", "/Day5.txt");
+        Main stack = new Main("/Tec_BoyJ/Day5 Stack.txt", "/Tec_BoyJ/Day5 Stack Practice.txt", "/Day5 Stack.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            if (f == 0) System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
-            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
-
-
-            //Moves ------------------------------------------------------
-            Scanner scanner = new Scanner(main.file[f]);
-
-            int length = 0;
-            while (scanner.hasNextLine()) {
-                length++;
-                scanner.nextLine();
-            }
-            String[] arr = new String[length];
-
-            int i = 0;
-            scanner = new Scanner(main.file[f]);
-            while (scanner.hasNextLine()) {
-                arr[i] = scanner.nextLine();
-                i++;
-            }
+            String[] arr = Main.setUp(f, main.file[f]);
 
 
             //Stack Array ------------------------------------------------------
-            Scanner scannerStack = new Scanner(main.stack[f]);
+            Scanner scannerStack = new Scanner(stack.file[f]);
             int lengthStack = 0;
             while (scannerStack.hasNextLine()) {
                 lengthStack++;
@@ -57,7 +41,7 @@ public class Day5 {
 
             int j = 0;
             int stackSize = 1;
-            scannerStack = new Scanner(main.stack[f]);
+            scannerStack = new Scanner(stack.file[f]);
             while (scannerStack.hasNextLine()) {
                 arrStack[j] = scannerStack.nextLine();
                 if (arrStack[j].equals("") || arrStack[j] == null) stackSize++;

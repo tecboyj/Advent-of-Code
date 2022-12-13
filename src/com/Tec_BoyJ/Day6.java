@@ -1,42 +1,18 @@
 package com.Tec_BoyJ;
 
-import java.io.File;
+import com.Tec_BoyJ.Main.Main;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
-import java.util.Objects;
-import java.util.Scanner;
 
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day6 {
-    File[] file;
-    public Day6(String fileLocation, String practiceLocation) throws URISyntaxException {
-        this.file = new File[2];
-        this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
-        this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
-    }
-
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day6 main = new Day6("/Day6.txt", "/Day6 Practice.txt");
+        Main main = new Main("/Tec_BoyJ/Day6.txt", "/Tec_BoyJ/Day6 Practice.txt", "/Day6.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            if (f == 0) System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
-            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
-            Scanner scanner = new Scanner(main.file[f]);
-
-            int length = 0;
-            while (scanner.hasNextLine()) {
-                length++;
-                scanner.nextLine();
-            }
-            String[] arr = new String[length];
-
-            int i = 0;
-            scanner = new Scanner(main.file[f]);
-            while (scanner.hasNextLine()) {
-                arr[i] = scanner.nextLine();
-                i++;
-            }
+            String[] arr = Main.setUp(f, main.file[f]);
 
             System.out.println(ANSI_GREEN + "Part 1: 4 Unique characters" + ANSI_RESET);
             System.out.println("Corster100: ----------");
@@ -46,7 +22,7 @@ public class Day6 {
             }
             System.out.println("Me: ----------");
 
-            int[] count1 = new int[length];
+            int[] count1 = new int[arr.length];
             for (int j = 0; j < arr.length; j++) {
                 int l = 0;
                 while (true) {
@@ -72,7 +48,7 @@ public class Day6 {
 
             System.out.println("Me: ----------");
 
-            int[] count2 = new int[length];
+            int[] count2 = new int[arr.length];
             for (int j = 0; j < arr.length; j++) {
                 int l = 0;
                 while (true) {

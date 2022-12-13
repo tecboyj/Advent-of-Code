@@ -1,49 +1,21 @@
 package com.Tec_BoyJ;
 
-import java.io.File;
+import com.Tec_BoyJ.Main.Main;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
-import java.util.Objects;
-import java.util.Scanner;
 
-import static com.Tec_BoyJ.Main.Main.ANSI_RESET;
-import static com.Tec_BoyJ.Main.Main.ANSI_CYAN;
-import static com.Tec_BoyJ.Main.Main.ANSI_GREEN;
+import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day3 {
     static int priorityValue = 0;
     static String[] alpha = new String[52];
 
-
-    File[] file;
-    public Day3(String fileLocation, String practiceLocation) throws URISyntaxException {
-        this.file = new File[2];
-        this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
-        this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
-    }
-
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Day3 main = new Day3("/Day3.txt", "/Day3 Practice.txt");
+        Main main = new Main("/Tec_BoyJ/Day3.txt", "/Tec_BoyJ/Day3 Practice.txt", "/Day3.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            if (f == 0)
-                System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
-            else System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
-            Scanner scanner = new Scanner(main.file[f]);
-
-            int length = 0;
-            while (scanner.hasNextLine()) {
-                length++;
-                scanner.nextLine();
-            }
-            String[] arr = new String[length];
-
-            scanner = new Scanner(main.file[f]);
-            int i = 0;
-            while (scanner.hasNextLine()) {
-                arr[i] = scanner.nextLine();
-                i++;
-            }
+            String[] arr = Main.setUp(f, main.file[f]);
 
             charArray();
 
