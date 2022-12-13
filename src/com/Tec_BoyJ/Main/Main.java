@@ -4,7 +4,6 @@ import com.Tec_BoyJ.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,15 +15,14 @@ public class Main {
     static boolean run;
 
     public String[] file = new String[3];
-    public Main(String fileLocation, String practiceLocation, String otherPerson) throws URISyntaxException {
+    public Main(String fileLocation, String practiceLocation, String otherPerson) {
         this.file[0] = practiceLocation;
         this.file[1] = fileLocation;
         this.file[2] = otherPerson;
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        //run = scanner.nextBoolean();
         run = true;
         if (run) {
             System.out.println(ANSI_RED + "Day 1: ------------------------------------------------------------" + ANSI_RESET);

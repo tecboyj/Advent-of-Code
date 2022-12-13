@@ -3,7 +3,6 @@ package com.Tec_BoyJ;
 import com.Tec_BoyJ.Main.Main;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.*;
 
 public class Day7 {
@@ -11,7 +10,7 @@ public class Day7 {
     static Directory[] directories;
     static Stack[] stackContainedDirectories;
 
-    public static void main(String[] args) throws URISyntaxException, IOException {
+    public static void main(String[] args) throws IOException {
         Main main = new Main("/Tec_BoyJ/Day7.txt", "/Tec_BoyJ/Day7 Practice.txt", "/Others/Day7.txt");
 
         for (int f = 0; f < main.file.length; f++) {

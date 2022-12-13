@@ -3,7 +3,6 @@ package com.Tec_BoyJ;
 import com.Tec_BoyJ.Main.Main;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import static com.Tec_BoyJ.Main.Main.*;
 

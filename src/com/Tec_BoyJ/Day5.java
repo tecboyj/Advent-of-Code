@@ -10,7 +10,7 @@ import java.util.*;
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day5 {
-    public static void main(String[] args) throws URISyntaxException, IOException {
+    public static void main(String[] args) throws IOException {
         Main main = new Main("/Tec_BoyJ/Day5.txt", "/Tec_BoyJ/Day5 Practice.txt", "/Others/Day5.txt");
         Main stack = new Main("/Tec_BoyJ/Day5 Stack.txt", "/Tec_BoyJ/Day5 Stack Practice.txt", "/Others/Day5 Stack.txt");
         Day5 day5 = new Day5();

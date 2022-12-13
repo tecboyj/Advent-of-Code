@@ -3,12 +3,11 @@ package com.Tec_BoyJ;
 import com.Tec_BoyJ.Main.Main;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day12 {
-    public static void main(String[] args) throws URISyntaxException, IOException {
+    public static void main(String[] args) throws IOException {
         Main main = new Main("/Tec_BoyJ/Day12.txt", "/Tec_BoyJ/Day12 Practice.txt", "/Others/Day12.txt");
 
         for (int f = 0; f < main.file.length; f++) {
