@@ -2,6 +2,7 @@ package com.Tec_BoyJ.Main;
 
 import com.Tec_BoyJ.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Scanner;
@@ -23,7 +24,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner scanner = new Scanner(System.in);
-        run = scanner.nextBoolean();
+        //run = scanner.nextBoolean();
+        run = true;
         if (run) {
             System.out.println(ANSI_RED + "Day 1: ------------------------------------------------------------" + ANSI_RESET);
             Day1.main(args);
@@ -78,9 +80,10 @@ public class Main {
         else if (f == 1) System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
         else System.out.println(ANSI_CYAN + "Other Person: -----------------------------------" + ANSI_RESET);
 
+        File file = new File("Day.txt");
         Scanner scanner;
         if (run) scanner = new Scanner(getClass().getResource(string).openStream());
-        else scanner = new Scanner(getClass().getResource("Day.txt").openStream());
+        else scanner = new Scanner(file);
 
         int length = 0;
         while (scanner.hasNextLine()) {
@@ -90,7 +93,8 @@ public class Main {
         String[] arr = new String[length];
 
         int i = 0;
-        scanner = new Scanner(getClass().getResource(string).openStream());
+        if (run) scanner = new Scanner(getClass().getResource(string).openStream());
+        else scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             arr[i] = scanner.nextLine();
             i++;
