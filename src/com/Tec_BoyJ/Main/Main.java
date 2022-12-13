@@ -59,7 +59,7 @@ public class Main {
                 case 10: Day10.main(args);break;
                 case 11: Day11.main(args);break;
                 case 12: Day12.main(args);break;
-                //case 13: Day13.main(args);break;
+                case 13: Day13.main(args);break;
                 //case 14: Day14.main(args);break;
                 //case 15: Day15.main(args);break;
                 //case 16: Day16.main(args);break;

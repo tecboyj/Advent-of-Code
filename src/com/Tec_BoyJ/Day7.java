@@ -7,7 +7,6 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 public class Day7 {
-
     static HashMap<String, Directory> hashMap = new HashMap<>();
     static Directory[] directories;
     static Stack[] stackContainedDirectories;
@@ -16,7 +15,7 @@ public class Day7 {
         Main main = new Main("/Tec_BoyJ/Day7.txt", "/Tec_BoyJ/Day7 Practice.txt", "/Others/Day7.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            if (f == 1) return;
+            if (!(f == 0)) return;
             String[] arr = main.setUp(f, main.file[f]);
 
             Stack<String> stackNoDupe = new Stack<>();
