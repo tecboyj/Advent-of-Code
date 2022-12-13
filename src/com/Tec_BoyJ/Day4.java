@@ -2,17 +2,17 @@ package com.Tec_BoyJ;
 
 import com.Tec_BoyJ.Main.Main;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day4 {
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Main main = new Main("/Tec_BoyJ/Day4.txt", "/Tec_BoyJ/Day4 Practice.txt", "/Day4.txt");
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Main main = new Main("/Tec_BoyJ/Day4.txt", "/Tec_BoyJ/Day4 Practice.txt", "/Others/Day4.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            String[] arr = Main.setUp(f, main.file[f]);
+            String[] arr = main.setUp(f, main.file[f]);
 
             int count = 0;
             int count2 = 0;

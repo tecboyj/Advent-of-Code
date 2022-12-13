@@ -2,7 +2,7 @@ package com.Tec_BoyJ;
 
 import com.Tec_BoyJ.Main.Main;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static com.Tec_BoyJ.Main.Main.*;
@@ -11,11 +11,11 @@ public class Day3 {
     static int priorityValue = 0;
     static String[] alpha = new String[52];
 
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Main main = new Main("/Tec_BoyJ/Day3.txt", "/Tec_BoyJ/Day3 Practice.txt", "/Day3.txt");
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Main main = new Main("/Tec_BoyJ/Day3.txt", "/Tec_BoyJ/Day3 Practice.txt", "/Others/Day3.txt");
 
         for (int f = 0; f < main.file.length; f++) {
-            String[] arr = Main.setUp(f, main.file[f]);
+            String[] arr = main.setUp(f, main.file[f]);
 
             charArray();
 
@@ -60,58 +60,58 @@ public class Day3 {
 
     public static void priorityValue(String string) {
         switch (string) {
-            case "a" -> priorityValue++;
-            case "b" -> priorityValue += 2;
-            case "c" -> priorityValue += 3;
-            case "d" -> priorityValue += 4;
-            case "e" -> priorityValue += 5;
-            case "f" -> priorityValue += 6;
-            case "g" -> priorityValue += 7;
-            case "h" -> priorityValue += 8;
-            case "i" -> priorityValue += 9;
-            case "j" -> priorityValue += 10;
-            case "k" -> priorityValue += 11;
-            case "l" -> priorityValue += 12;
-            case "m" -> priorityValue += 13;
-            case "n" -> priorityValue += 14;
-            case "o" -> priorityValue += 15;
-            case "p" -> priorityValue += 16;
-            case "q" -> priorityValue += 17;
-            case "r" -> priorityValue += 18;
-            case "s" -> priorityValue += 19;
-            case "t" -> priorityValue += 20;
-            case "u" -> priorityValue += 21;
-            case "v" -> priorityValue += 22;
-            case "w" -> priorityValue += 23;
-            case "x" -> priorityValue += 24;
-            case "y" -> priorityValue += 25;
-            case "z" -> priorityValue += 26;
-            case "A" -> priorityValue += 27;
-            case "B" -> priorityValue += 28;
-            case "C" -> priorityValue += 29;
-            case "D" -> priorityValue += 30;
-            case "E" -> priorityValue += 31;
-            case "F" -> priorityValue += 32;
-            case "G" -> priorityValue += 33;
-            case "H" -> priorityValue += 34;
-            case "I" -> priorityValue += 35;
-            case "J" -> priorityValue += 36;
-            case "K" -> priorityValue += 37;
-            case "L" -> priorityValue += 38;
-            case "M" -> priorityValue += 39;
-            case "N" -> priorityValue += 40;
-            case "O" -> priorityValue += 41;
-            case "P" -> priorityValue += 42;
-            case "Q" -> priorityValue += 43;
-            case "R" -> priorityValue += 44;
-            case "S" -> priorityValue += 45;
-            case "T" -> priorityValue += 46;
-            case "U" -> priorityValue += 47;
-            case "V" -> priorityValue += 48;
-            case "W" -> priorityValue += 49;
-            case "X" -> priorityValue += 50;
-            case "Y" -> priorityValue += 51;
-            case "Z" -> priorityValue += 52;
+            case "a": priorityValue++; break;
+            case "b": priorityValue += 2; break;
+            case "c": priorityValue += 3; break;
+            case "d": priorityValue += 4; break;
+            case "e": priorityValue += 5; break;
+            case "f": priorityValue += 6; break;
+            case "g": priorityValue += 7; break;
+            case "h": priorityValue += 8; break;
+            case "i": priorityValue += 9; break;
+            case "j": priorityValue += 10; break;
+            case "k": priorityValue += 11; break;
+            case "l": priorityValue += 12; break;
+            case "m": priorityValue += 13; break;
+            case "n": priorityValue += 14; break;
+            case "o": priorityValue += 15; break;
+            case "p": priorityValue += 16; break;
+            case "q": priorityValue += 17; break;
+            case "r": priorityValue += 18; break;
+            case "s": priorityValue += 19; break;
+            case "t": priorityValue += 20; break;
+            case "u": priorityValue += 21; break;
+            case "v": priorityValue += 22; break;
+            case "w": priorityValue += 23; break;
+            case "x": priorityValue += 24; break;
+            case "y": priorityValue += 25; break;
+            case "z": priorityValue += 26; break;
+            case "A": priorityValue += 27; break;
+            case "B": priorityValue += 28; break;
+            case "C": priorityValue += 29; break;
+            case "D": priorityValue += 30; break;
+            case "E": priorityValue += 31; break;
+            case "F": priorityValue += 32; break;
+            case "G": priorityValue += 33; break;
+            case "H": priorityValue += 34; break;
+            case "I": priorityValue += 35; break;
+            case "J": priorityValue += 36; break;
+            case "K": priorityValue += 37; break;
+            case "L": priorityValue += 38; break;
+            case "M": priorityValue += 39; break;
+            case "N": priorityValue += 40; break;
+            case "O": priorityValue += 41; break;
+            case "P": priorityValue += 42; break;
+            case "Q": priorityValue += 43; break;
+            case "R": priorityValue += 44; break;
+            case "S": priorityValue += 45; break;
+            case "T": priorityValue += 46; break;
+            case "U": priorityValue += 47; break;
+            case "V": priorityValue += 48; break;
+            case "W": priorityValue += 49; break;
+            case "X": priorityValue += 50; break;
+            case "Y": priorityValue += 51; break;
+            case "Z": priorityValue += 52; break;
         }
     }
     public static void charArray() {

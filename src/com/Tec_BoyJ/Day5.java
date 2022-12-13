@@ -3,35 +3,24 @@ package com.Tec_BoyJ;
 import com.Tec_BoyJ.Main.Main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day5 {
-    File[] file;
-    File[] stack;
-    public Day5(String fileLocation, String practiceLocation, String stackLocation, String stackPracticeLocation) throws URISyntaxException {
-        this.file = new File[2];
-        this.file[0] = new File(Objects.requireNonNull(getClass().getResource(practiceLocation)).toURI());
-        this.file[1] = new File(Objects.requireNonNull(getClass().getResource(fileLocation)).toURI());
-
-        this.stack = new File[2];
-        this.stack[0] = new File(Objects.requireNonNull(getClass().getResource(stackPracticeLocation)).toURI());
-        this.stack[1] = new File(Objects.requireNonNull(getClass().getResource(stackLocation)).toURI());
-    }
-
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Main main = new Main("/Tec_BoyJ/Day5.txt", "/Tec_BoyJ/Day5 Practice.txt", "/Day5.txt");
-        Main stack = new Main("/Tec_BoyJ/Day5 Stack.txt", "/Tec_BoyJ/Day5 Stack Practice.txt", "/Day5 Stack.txt");
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Main main = new Main("/Tec_BoyJ/Day5.txt", "/Tec_BoyJ/Day5 Practice.txt", "/Others/Day5.txt");
+        Main stack = new Main("/Tec_BoyJ/Day5 Stack.txt", "/Tec_BoyJ/Day5 Stack Practice.txt", "/Others/Day5 Stack.txt");
+        Day5 day5 = new Day5();
 
         for (int f = 0; f < main.file.length; f++) {
-            String[] arr = Main.setUp(f, main.file[f]);
+            String[] arr = main.setUp(f, main.file[f]);
 
 
             //Stack Array ------------------------------------------------------
-            Scanner scannerStack = new Scanner(stack.file[f]);
+            Scanner scannerStack = day5.scanner(stack.file[f]);
             int lengthStack = 0;
             while (scannerStack.hasNextLine()) {
                 lengthStack++;
@@ -41,7 +30,7 @@ public class Day5 {
 
             int j = 0;
             int stackSize = 1;
-            scannerStack = new Scanner(stack.file[f]);
+            scannerStack = day5.scanner(stack.file[f]);
             while (scannerStack.hasNextLine()) {
                 arrStack[j] = scannerStack.nextLine();
                 if (arrStack[j].equals("") || arrStack[j] == null) stackSize++;
@@ -144,5 +133,9 @@ public class Day5 {
             temp.add(stack.pop());
         }
         return temp;
+    }
+
+    public Scanner scanner(String string) throws IOException {
+        return new Scanner(getClass().getResource(string).openStream());
     }
 }

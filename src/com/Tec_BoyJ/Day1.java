@@ -2,7 +2,7 @@ package com.Tec_BoyJ;
 
 import com.Tec_BoyJ.Main.Main;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
@@ -10,10 +10,10 @@ import static com.Tec_BoyJ.Main.Main.*;
 import static java.lang.Integer.parseInt;
 
 public class Day1 {
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Main main = new Main("/Tec_BoyJ/Day1.txt", "/Tec_BoyJ/Day1 Practice.txt", "/Day1.txt");
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Main main = new Main("/Tec_BoyJ/Day1.txt", "/Tec_BoyJ/Day1 Practice.txt", "/Others/Day1.txt");
         for (int f = 0; f < main.file.length; f++) {
-            String[] arr = Main.setUp(f, main.file[f]);
+            String[] arr = main.setUp(f, main.file[f]);
             int[] arr2 = new int[arr.length];
 
             int zero = 0;

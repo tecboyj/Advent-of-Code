@@ -2,7 +2,7 @@ package com.Tec_BoyJ;
 
 import com.Tec_BoyJ.Main.Main;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
@@ -12,12 +12,12 @@ public class Day7 {
     static Directory[] directories;
     static Stack[] stackContainedDirectories;
 
-    public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        Main main = new Main("/Tec_BoyJ/Day7.txt", "/Tec_BoyJ/Day7 Practice.txt", "/Day7.txt");
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        Main main = new Main("/Tec_BoyJ/Day7.txt", "/Tec_BoyJ/Day7 Practice.txt", "/Others/Day7.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             if (f == 1) return;
-            String[] arr = Main.setUp(f, main.file[f]);
+            String[] arr = main.setUp(f, main.file[f]);
 
             Stack<String> stackNoDupe = new Stack<>();
             int directoryArr = 0;
