@@ -2,17 +2,15 @@ package com.Tec_BoyJ;
 
 import com.Tec_BoyJ.Main.Main;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.*;
 
 import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day5 {
     public static void main(String[] args) throws IOException {
-        Main main = new Main("/Tec_BoyJ/Day5.txt", "/Tec_BoyJ/Day5 Practice.txt", "/Others/Day5.txt");
-        Main stack = new Main("/Tec_BoyJ/Day5 Stack.txt", "/Tec_BoyJ/Day5 Stack Practice.txt", "/Others/Day5 Stack.txt");
+        Main main = new Main("/Tec_BoyJ/Problem/Day5.txt", "/Tec_BoyJ/Example/Day5 Practice.txt", "/Others/Day5.txt");
+        Main stack = new Main("/Tec_BoyJ/Problem/Day5 Stack.txt", "/Tec_BoyJ/Example/Day5 Stack Practice.txt", "/Others/Day5 Stack.txt");
         Day5 day5 = new Day5();
 
         for (int f = 0; f < main.file.length; f++) {

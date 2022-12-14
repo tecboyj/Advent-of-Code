@@ -11,7 +11,7 @@ public class Day7 {
     static Stack[] stackContainedDirectories;
 
     public static void main(String[] args) throws IOException {
-        Main main = new Main("/Tec_BoyJ/Day7.txt", "/Tec_BoyJ/Day7 Practice.txt", "/Others/Day7.txt");
+        Main main = new Main("/Tec_BoyJ/Problem/Day7.txt", "/Tec_BoyJ/Example/Day7 Practice.txt", "/Others/Day7.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             if (!(f == 0)) return;

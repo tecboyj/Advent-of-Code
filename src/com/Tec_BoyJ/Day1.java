@@ -10,7 +10,7 @@ import static java.lang.Integer.parseInt;
 
 public class Day1 {
     public static void main(String[] args) throws IOException {
-        Main main = new Main("/Tec_BoyJ/Day1.txt", "/Tec_BoyJ/Day1 Practice.txt", "/Others/Day1.txt");
+        Main main = new Main("/Tec_BoyJ/Problem/Day1.txt", "/Tec_BoyJ/Example/Day1 Practice.txt", "/Others/Day1.txt");
         for (int f = 0; f < main.file.length; f++) {
             String[] arr = main.setUp(f, main.file[f]);
             int[] arr2 = new int[arr.length];

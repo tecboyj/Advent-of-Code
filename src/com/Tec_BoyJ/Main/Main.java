@@ -12,7 +12,7 @@ public class Main {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_RED = "\u001B[31m";
 
-    static boolean run;
+    static boolean run = true;
 
     public String[] file = new String[3];
     public Main(String fileLocation, String practiceLocation, String otherPerson) {
@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        run = true;
+        //run = false;
         if (run) {
             System.out.println(ANSI_RED + "Day 1: ------------------------------------------------------------" + ANSI_RESET);
             Day1.main(args);
@@ -74,7 +74,7 @@ public class Main {
         }
     }
     public String[] setUp(int f, String string) throws IOException {
-        if (f == 0) System.out.println(ANSI_CYAN + "Example: ---------------------------------------- 95437" + ANSI_RESET);
+        if (f == 0) System.out.println(ANSI_CYAN + "Example: ----------------------------------------" + ANSI_RESET);
         else if (f == 1) System.out.println(ANSI_CYAN + "Problem: ----------------------------------------" + ANSI_RESET);
         else System.out.println(ANSI_CYAN + "Other Person: -----------------------------------" + ANSI_RESET);
 

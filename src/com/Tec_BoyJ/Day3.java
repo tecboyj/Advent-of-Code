@@ -11,7 +11,7 @@ public class Day3 {
     static String[] alpha = new String[52];
 
     public static void main(String[] args) throws IOException {
-        Main main = new Main("/Tec_BoyJ/Day3.txt", "/Tec_BoyJ/Day3 Practice.txt", "/Others/Day3.txt");
+        Main main = new Main("/Tec_BoyJ/Problem/Day3.txt", "/Tec_BoyJ/Example/Day3 Practice.txt", "/Others/Day3.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             String[] arr = main.setUp(f, main.file[f]);

@@ -8,7 +8,7 @@ import static com.Tec_BoyJ.Main.Main.*;
 
 public class Day12 {
     public static void main(String[] args) throws IOException {
-        Main main = new Main("/Tec_BoyJ/Day12.txt", "/Tec_BoyJ/Day12 Practice.txt", "/Others/Day12.txt");
+        Main main = new Main("/Tec_BoyJ/Problem/Day12.txt", "/Tec_BoyJ/Example/Day12 Practice.txt", "/Others/Day12.txt");
 
         for (int f = 0; f < main.file.length; f++) {
             String[] arr = main.setUp(f, main.file[f]);
