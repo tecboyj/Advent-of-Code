@@ -23,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        //run = false;
+        //System.out.println("What day would you like to run?:"); run = false;
         if (run) {
             System.out.println(ANSI_RED + "Day 1: ------------------------------------------------------------" + ANSI_RESET);
             Day1.main(args);
@@ -81,6 +81,7 @@ public class Main {
         File file = new File("Day.txt");
         Scanner scanner;
         if (run) scanner = new Scanner(getClass().getResource(string).openStream());
+        else if (!(f == 2)) scanner = new Scanner(getClass().getResource(string).openStream());
         else scanner = new Scanner(file);
 
         int length = 0;
@@ -92,6 +93,7 @@ public class Main {
 
         int i = 0;
         if (run) scanner = new Scanner(getClass().getResource(string).openStream());
+        else if (!(f == 2)) scanner = new Scanner(getClass().getResource(string).openStream());
         else scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             arr[i] = scanner.nextLine();

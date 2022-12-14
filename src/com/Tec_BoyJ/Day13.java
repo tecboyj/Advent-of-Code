@@ -68,7 +68,7 @@ public class Day13 {
                         }
                     }
                 } else if (!(l1.isEmpty() || l2.isEmpty())) {
-                    part1 += containsList(l1, l2, mapHash);
+                    part1 += containsList(l1, l2, mapHash, map, i);
                 } else if(l2.isEmpty() && !l1.isEmpty()) part1 += mapHash.get(l1);
             }
             System.out.println(part1);
@@ -80,7 +80,7 @@ public class Day13 {
             //System.out.println(ANSI_GREEN + "Part 2: --------------------" + ANSI_RESET);
         }
     }
-    public static int containsList(List l1, List l2, LinkedHashMap<List, Integer> mapHash) {
+    public static int containsList(List l1, List l2, LinkedHashMap<List, Integer> mapHash, LinkedHashMap<Integer, List> map, int m) {
         if (l1.size() == l2.size()) {
             for (int i = 0; i < l1.size(); i++) {
                 String s1 = l1.get(i).toString();
@@ -94,7 +94,7 @@ public class Day13 {
                     }
                 } else if (s1.equals("") || s2.equals("")) {
                     if (s2.equals("") && !s1.equals("")) {
-                        return mapHash.get(l1);
+                        return mapHash.get(map.get(m));
                     }
                 } else {
                     String s3 = null;
@@ -107,9 +107,7 @@ public class Day13 {
                     }
                     List l3 = Arrays.asList(s3.split(","));
                     List l4 = Arrays.asList(s4.split(","));
-                    int x = containsList(l3, l4, mapHash);
-                    System.out.println(x);
-                    return x;
+                    return containsList(l3, l4, mapHash, map, i);
                 }
             }
         }
