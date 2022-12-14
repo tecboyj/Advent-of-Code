@@ -22,6 +22,12 @@ public class Day13 {
                 }
             }
 
+            for (int i = 0; i < list.length; i++) {
+                if (list[i] != null) {
+                    System.out.println(list[i]);
+                } else System.out.println();
+            }
+
             System.out.println();
             LinkedHashMap<List, List> hashMap = new LinkedHashMap<>();
             LinkedHashMap<Integer, List> map = new LinkedHashMap<>();
@@ -71,6 +77,7 @@ public class Day13 {
                     part1 += containsList(l1, l2, mapHash, map, i);
                 } else if(l2.isEmpty() && !l1.isEmpty()) part1 += mapHash.get(l1);
             }
+            System.out.println("13");
             System.out.println(part1);
 
 
@@ -90,11 +97,11 @@ public class Day13 {
                     int x1 = Integer.parseInt(s1);
                     int x2 = Integer.parseInt(s2);
                     if (x1 > x2) {
-                        return mapHash.get(l1);
+                        return m + 1;
                     }
                 } else if (s1.equals("") || s2.equals("")) {
                     if (s2.equals("") && !s1.equals("")) {
-                        return mapHash.get(map.get(m));
+                        return m + 1;
                     }
                 } else {
                     String s3 = null;
