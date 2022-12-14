@@ -35,7 +35,7 @@ public class Day13 {
                 count++;
             }
 
-            System.out.println(mapHash);
+            //System.out.println(hashMap);
 
             int part1 = 0;
             for (int i = 0; i < map.size(); i++) {
@@ -56,9 +56,8 @@ public class Day13 {
                         break;
                     }
                 }
-                if (l1.size() != l2.size()) {
-                    if (l1.size() > l2.size()) part1 += mapHash.get(l1);
-                } else if (!(b || l1.isEmpty() || l2.isEmpty())) {
+                if (l1.size() > l2.size()) part1 += mapHash.get(l1);
+                else if (!(b || l1.isEmpty() || l2.isEmpty())) {
                     int x = 0;
                     for (int j = 0; j < l1.size(); j++) {
                         int x1 = Integer.parseInt(l1.get(j).toString());
@@ -69,8 +68,8 @@ public class Day13 {
                         }
                     }
                 } else if (!(l1.isEmpty() || l2.isEmpty())) {
-                    //
-                } else part1 += mapHash.get(l1);
+                    part1 += containsList(l1, l2, mapHash);
+                } else if(l2.isEmpty() && !l1.isEmpty()) part1 += mapHash.get(l1);
             }
             System.out.println(part1);
 
@@ -80,5 +79,40 @@ public class Day13 {
             //System.out.println(ANSI_GREEN + "Part 1: --------------------" + ANSI_RESET);
             //System.out.println(ANSI_GREEN + "Part 2: --------------------" + ANSI_RESET);
         }
+    }
+    public static int containsList(List l1, List l2, LinkedHashMap<List, Integer> mapHash) {
+        if (l1.size() == l2.size()) {
+            for (int i = 0; i < l1.size(); i++) {
+                String s1 = l1.get(i).toString();
+                String s2 = l2.get(i).toString();
+                //System.out.println(s1 + " " + s2);
+                if (!(s1.contains("[") || s2.contains("[") || s1.equals("") || s2.equals(""))) {
+                    int x1 = Integer.parseInt(s1);
+                    int x2 = Integer.parseInt(s2);
+                    if (x1 > x2) {
+                        return mapHash.get(l1);
+                    }
+                } else if (s1.equals("") || s2.equals("")) {
+                    if (s2.equals("") && !s1.equals("")) {
+                        return mapHash.get(l1);
+                    }
+                } else {
+                    String s3 = null;
+                    String s4 = null;
+                    if (s1.contains("[")) {
+                        s3 = s1.substring(1, s1.length() - 1);
+                    }
+                    if (s2.contains("[")) {
+                        s4 = s2.substring(1, s2.length() - 1);
+                    }
+                    List l3 = Arrays.asList(s3.split(","));
+                    List l4 = Arrays.asList(s4.split(","));
+                    int x = containsList(l3, l4, mapHash);
+                    System.out.println(x);
+                    return x;
+                }
+            }
+        }
+        return 0;
     }
 }
