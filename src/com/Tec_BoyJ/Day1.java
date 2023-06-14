@@ -10,19 +10,22 @@ import static java.lang.Integer.parseInt;
 
 public class Day1 {
     public static void main(String[] args) throws IOException {
+        //Main setup for all files
         Main main = new Main("/Tec_BoyJ/Problem/Day1.txt", "/Tec_BoyJ/Example/Day1 Practice.txt", "/Others/Day1.txt");
         for (int f = 0; f < main.file.length; f++) {
             String[] arr = main.setUp(f, main.file[f]);
             int[] arr2 = new int[arr.length];
 
+            //Converting String[] to int[]
             int zero = 0;
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[j] == null) arr[j] = "0";
-                if (Objects.equals(arr[j], "")) arr[j] = "0";
-                arr2[j] = parseInt(arr[j]);
-                if (arr2[j] == 0) zero++;
+            for (int i = 0; i < arr.length; i++) {
+                if (Objects.equals(arr[i], "")) arr[i] = "0";
+                arr2[i] = parseInt(arr[i]);
+                if (arr2[i] == 0) zero++;
             }
 
+
+            //Adding the calories together
             int next = 0;
             zero++;
 
@@ -32,15 +35,20 @@ public class Day1 {
                 arr3[next] += k;
             }
 
+
+            //Comparing who has the most calories
+
             int out1 = 0;
             int out2 = 0;
             int out3 = 0;
 
-            for (int l : arr3) if (l > out1) out1 = l;
-            for (int m : arr3) if (m > out2 && m != out1) out2 = m;
-            for (int n : arr3) if (n > out3 && n != out2 && n != out1) out3 = n;
+            for (int i : arr3) if (i > out1) out1 = i;
+            for (int i : arr3) if (i > out2 && i != out1) out2 = i;
+            for (int i : arr3) if (i > out3 && i != out2 && i != out1) out3 = i;
 
             int outTotal = out1 + out2 + out3;
+
+            //Printing out the results
 
             System.out.println(ANSI_GREEN + "Part 1: Elf with most snacks --------------------" + ANSI_RESET);
             System.out.println(out1);

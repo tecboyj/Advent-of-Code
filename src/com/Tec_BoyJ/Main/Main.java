@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\033[0;32m";
     public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_RED = "\u001B[31m";
 
     static boolean run = true;
 
